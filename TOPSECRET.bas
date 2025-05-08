@@ -101,4 +101,5 @@ If X > 25 Then
 Else X = X + 10: Return
 End If
 280 M$ = "AGENT'S PRIMARY TRAITS": GoSub 100
+290 Print "1. STRENGTH"; P1, "4. COURAGE"; P4: Print: Print "2. CHARM"; P2, "5. KNOWLEDGE"; P5: Print: Print "3. WlLLPOWER"; P3, "6. COORDlNATlON"; P6
 
