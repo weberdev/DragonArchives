@@ -57,7 +57,7 @@ Else
 End If
 120 Print: HD = 0: Input " HANDEDNESS (0=RANDOM, 1=RIGHT, 2=LEFT)"; HD
 130 If HD > O Then 140 Else HD = 1:
-If Rnd(100) > 90 Then HD = 2
+If Int(Rnd * 100) > 90 Then HD = 2
 140 If HD = 1 Then
     Print " AGENT IS RIGHT HANDED"
 Else Print " AGENT IS LEFT HANDED"
@@ -67,7 +67,7 @@ End If
     GoTo 170
 Else SX = 1
 End If
-If Rnd(10) > 8 Then SX = 2
+If Int(Rnd * 10) > 8 Then SX = 2
 170 If SX = 1 Then
     Print " AGENT IS MALE"
 Else
@@ -75,12 +75,12 @@ Else
 End If
 180 Print: Input " AGENT RACE:"; RC$: If Len(RC$) = 0 Then RC$ = "CAUCASIAN"
 190 Rem GENERATE PRIMARY CHARACTERISTICS
-200 X = Rnd(100): If CT = 1 Then GoSub 270
-210 P1 = X: X = Rnd(100): If CT = 1 Then GoSub 270
-220 P2 = X: X = Rnd(100): If CT = 1 Then GoSub 270
-230 P3 = X: X = Rnd(100): If CT = 1 Then GoSub 270
-240 P4 = X: X = Rnd(100): If CT = 1 Then GoSub 270
-250 P5 = X: X = Rnd(100): If CT = 1 Then GoSub 270
+200 X = Int(Rnd * 100): If CT = 1 Then GoSub 270
+210 P1 = X: X = Int(Rnd * 100): If CT = 1 Then GoSub 270
+220 P2 = X: X = Int(Rnd * 100): If CT = 1 Then GoSub 270
+230 P3 = X: X = Int(Rnd * 100): If CT = 1 Then GoSub 270
+240 P4 = X: X = Int(Rnd * 100): If CT = 1 Then GoSub 270
+250 P5 = X: X = Int(Rnd * 100): If CT = 1 Then GoSub 270
 260 P6 = X: GoTo 280
 265 Rem INCREASE VALUES FOR PC
 270 If X > 90 Then
