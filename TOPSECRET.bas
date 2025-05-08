@@ -1,4 +1,11 @@
 Rem I found this program in a Dragon magazine on Archive.org. I think the original author is still active.
+
+Rem ------------------------------------------
+Rem Top Secret Agent Generator
+Rem Original: Joe Ulowetz, Dragon Magazine (1980)
+Rem Update: Ian Weber, 2025
+Rem ------------------------------------------
+
 1 Randomize Timer
 29 Rem AGENT KNOWLEDGE DATA
 30 Dim AKS(39)
@@ -116,11 +123,9 @@ If I = 8 Then 95 Else Print: Print: Print: Print "NEW VALUE DESIRED FOR TRAIT #"
 360 H = 70: If SX = 2 Then H = 65
 370 X = Int(Rnd * 10): H = H + HM(X): If X = 1 Then H = H + HS(Int(Rnd * 10)) Else If X = 10 Then H = H + HT(Int(Rnd * 10))
 375 Rem AGE
-380 AG=Int(RND*10)+Int(RND*10))+Int(RND*10)+12: IF CT=0 THEN AG=AG+Int(RND*20)
-385 REM GLASSES?
-390 GL=0: CG=P6: IF RND(10)<4THEN GL=1:
-CG=P6—lNT(P6*RND(100)/100): IF RND(10)=1
-THEN CL=2
-395 REM WEIGHT
+380 AG = Int(Rnd * 10) + Int(Rnd * 10) + Int(Rnd * 10) + 12: If CT = 0 Then AG = AG + Int(Rnd * 20)
+385 Rem GLASSES?
+390 GL = 0: CG = P6: If Int(Rnd * 10) < 4 Then GL = 1: CG = P6 - lNT(P6 * Int(Rnd * 100) / 100): If Int(Rnd * 10) = 1 Then CL = 2
+395 Rem WEIGHT
 
 
