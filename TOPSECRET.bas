@@ -127,5 +127,73 @@ If I = 8 Then 95 Else Print: Print: Print: Print "NEW VALUE DESIRED FOR TRAIT #"
 385 Rem GLASSES?
 390 GL = 0: CG = P6: If Int(Rnd * 10) < 4 Then GL = 1: CG = P6 - lNT(P6 * Int(Rnd * 100) / 100): If Int(Rnd * 10) = 1 Then CL = 2
 395 Rem WEIGHT
+400 WT = 170: X = (H - 70) * 5: If SX = 2 Then WT = 145: X = (H - 65) * 5
+410 WT = WT + X + Int(Rnd * 10) - 5: X = Int(Rnd * 10): WT = WT + X: If X = 1 Then WT = WT - WL(Int(Rnd * 10)) Else If X = 10 Then WT = WT + WH(Int(Rnd * 10))
+415 If SX = 2 Then WT = lNT(WT * .8)
+420 NL = Int(P5 / 25) + 1
+LF(1) = 70 + Int(Rnd * 10) + Int(Rnd * 10) + Int(Rnd * 10)
+For I = 2 To 5
+    LF(I) = 0
+Next I
+
+If NL = 1 Then
+    GoTo 440
+Else
+    For I = 2 To NL
+        LF(I) = Rnd * 100
+        If LF(I) < 40 Then
+            LF(I) = 40
+        Else
+            If LF(I) > LF(1) Then
+                LF(I) = LF(1)
+            End If
+        End If
+    Next I
+End If
+Rem dummied this out because it's all in the loop in QBASIC
+Rem    430 Next I
+440 NA = Int((P5 - 1) / 10) + 1
+For I = 1 To NA
+    X = Int(Rnd * 100)
+    If X < 75 Then
+        AO(I) = Int((X + 1) / 2)
+    Else
+        AO(I) = 39
+    End If
+
+    If I > 1 And AO(I) <> 39 Then
+        For I1 = 1 To I - 1
+            If AO(I) = AO(I1) Then
+                ' Duplicate found, reroll this slot
+                I = I - 1
+                Exit For
+            End If
+        Next I1
+    End If
+
+    AR(I) = Int(Rnd * 100)
+    If AR(I) < 21 Then AR(I) = AR(I) + 20
+    AR(I) = AR(I) + 30
+Next I
+
+470 Cls: Print "** TOP SECRET **":
+Print "STRENGTH"; P1, "OFFENSE"; S1, "HTH COMBAT"; T1: If SX = 1 Then M$ = "MALE" Else M$ = "FEMALE"
+480 Print " SEX"; M$: Print "CHARM"; P2, "DECEPTION"; S2, "WRESTLlNG"; T2, "HEIGHT"; Int(H / 12); CHRS(39); H - Int(H / 12) * 12; CHRS(34)
+490 Print "WILLPOWER"; P3, "EVASlON"; S3, "SURPRISE"; T3, "WEIGHT"; WT; "LBS", "COURAGE"; P4, "DEACTIVATION"; S4; Tab(48); "AGE:"; AG; "YRS"
+500 Print "KNOWLEDGE"; P5, "MOVEMENT"; S5;:
+If HD = 1 Then M$ = "RIGHT HANDED" Else M$ = "LEFT HANDED"
+510 Print Tab(50); M$: Print "COORDINATION"; P6; "/"; CG; " **LIFE LEVEL"; S6,
+If GL = 1 Then M$ = "CONTACTS/GLASSES": GoTo 520: Else If GL = 2 Then M$ = "GLASSES ONLY": GoTo 520: Else M$ = "VISION 20/20"
+520 Print Tab(50); M$
+530 Print Tab(56 - Len(RC$)); "RACE: "; RC$
+540 Print: Print "LANGUAGES:";: Print "NATIVE"; LF(1); " ";: If NL > 1 Then For I = 2 To NL: Print "OTHER"; LF(I); " ";: Next I
+550 Print: Print: Print "AREAS OF KNOWLEDGE:";
+For I = 1 To NA: Print AKS(AO(I)); AR(I),:
+Next I: Print "ALL OTHERS"; Int(P5 / 2 + .5)
+560 Print: X = 0: Input "ENTER 0 TO START OVER, 1 TO CHANGE PRIMARY TRAITS"; X
+570 If X = 0 Then 95 Else GoTo 280
+580 Rem VER. 1 JOE ULOWETZ 9/16/80
+590 Rem ver. 2 Ian Weber 5/7/25
+
 
 
