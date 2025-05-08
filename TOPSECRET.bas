@@ -7,6 +7,7 @@ Rem Update: Ian Weber, 2025
 Rem ------------------------------------------
 
 1 Randomize Timer
+2 Option Base 1
 29 Rem AGENT KNOWLEDGE DATA
 30 Dim AKS(39)
 For I = 1 To 39
