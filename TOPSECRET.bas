@@ -56,7 +56,7 @@ Else
     Print " AGENT IS PLAYER CHARACTER"
 End If
 120 Print: HD = 0: Input " HANDEDNESS (0=RANDOM, 1=RIGHT, 2=LEFT)"; HD
-130 If HD > O Then 140 Else HD = 1:
+130 If HD > 0 Then 140 Else HD = 1:
 If Int(Rnd * 100) > 90 Then HD = 2
 140 If HD = 1 Then
     Print " AGENT IS RIGHT HANDED"
@@ -109,5 +109,18 @@ If I = 8 Then 95 Else Print: Print: Print: Print "NEW VALUE DESIRED FOR TRAIT #"
 330 GoTo 280
 332 Print "ONE MOMENT PLEASE..."
 335 Rem SECONDARY TRAITS
+340 S1 = lNT(.5 + (P6 + P4) / 2): S2 = Int(.5 + (P4 + P2) / 2): S3 = lNT(.5 + (P2 + P6) / 2): S4 = Int(.5 + (P5 + P6) / 2): S5 = P1 + P3 + P6: S6 = Int(.5 + (P1 + P3) / 10)
+345 Rem TERTIARY TRAITS
+350 T1 = S3 + P1: T2 = S1 + P1: T3 = S2 + S3
+355 Rem HEIGHT
+360 H = 70: If SX = 2 Then H = 65
+370 X = Int(Rnd * 10): H = H + HM(X): If X = 1 Then H = H + HS(Int(Rnd * 10)) Else If X = 10 Then H = H + HT(Int(Rnd * 10))
+375 Rem AGE
+380 AG=Int(RND*10)+Int(RND*10))+Int(RND*10)+12: IF CT=0 THEN AG=AG+Int(RND*20)
+385 REM GLASSES?
+390 GL=0: CG=P6: IF RND(10)<4THEN GL=1:
+CG=P6—lNT(P6*RND(100)/100): IF RND(10)=1
+THEN CL=2
+395 REM WEIGHT
 
 
