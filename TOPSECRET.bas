@@ -98,7 +98,7 @@ If X > 25 Then
 Else X = X + 10: Return
 End If
 280 M$ = "AGENT'S PRIMARY TRAITS": GoSub 100
-290 Print "1. STRENGTH"; P1, "4. COURAGE"; P4: Print: Print "2. CHARM"; P2, "5. KNOWLEDGE"; P5: Print: Print "3. WlLLPOWER"; P3, "6. COORDlNATlON"; P6
+290 Print "1. STRENGTH"; P1, "4. COURAGE"; P4: Print: Print "2. CHARM"; P2, "              5. KNOWLEDGE"; P5: Print: Print "3. WlLLPOWER"; P3, "6. COORDlNATlON"; P6
 300 Print: I = 0: Input "ENTER 0 TO CONTINUE, 1-6 TO CHANGE TRAIT (BY NUMBER), 7 TO RE-ROLL PRIMARY TRAITS, 8 TO START ALL OVER"; I
 305 IF I=0 THEN goto 332 ELSE IF I=7 THEN 200 ELSE
 If I = 8 Then 95 Else Print: Print: Print: Print "NEW VALUE DESIRED FOR TRAIT #"; I;: Input X
