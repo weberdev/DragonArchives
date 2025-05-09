@@ -41,11 +41,13 @@ WH(1) = 15: WH(2) = 20: WH(3) = 25: WH(4) = 30: WH(5) = 40: WH(6) = 50: WH(7) = 
 Print " CODE NAME:PAPERWEIGHT"
 80 Print: Print " DO NOT ACCEPT TAPE FROM COURIER": Print "IF SEAL IS BROKEN"
 83 Print: Print " (TOUCH ANY KEY)";
-90 If Len(INKEYS) = 0 Then 90
+90 Do
+    K$ = InKey$
+Loop While K$ = ""
 95 MS$ = "BEGIN: AGENT GENERATION"
 GoSub 100
 GoTo 110
-100 Print "** TOP SECRET **": Print: Print MS
+100 Print: Print "** TOP SECRET **": Print:
 105 Print: Print: Return
 110 CT = 0:
 Input " 0=NPC AGENT, 1=PLAYER AGENT"; CT
@@ -149,7 +151,7 @@ For I = 1 To NA
     X = Int(Rnd * 100)
     If X < 75 Then
         AO(I) = Int((X + 1) / 2)
-           If AO(I) < 1 Then AO(I) = 1
+        If AO(I) < 1 Then AO(I) = 1
     Else
         AO(I) = 39
     End If
@@ -179,10 +181,14 @@ If HD = 1 Then M$ = "RIGHT HANDED" Else M$ = "LEFT HANDED"
 If GL = 1 Then M$ = "CONTACTS/GLASSES": GoTo 520: Else If GL = 2 Then M$ = "GLASSES ONLY": GoTo 520: Else M$ = "VISION 20/20"
 520 Print Tab(50); M$
 530 Print Tab(56 - Len(RC$)); "RACE: "; RC$
-540 Print: Print "LANGUAGES:";: Print "NATIVE"; LF(1); " ";: If NL > 1 Then For I = 2 To NL: Print "OTHER"; LF(I); " ";: Next I
+540 Print: Print "LANGUAGES:";: Print "NATIVE"; LF(1); " ";: If NL > 1 Then For I = 2 To NL: Print "OTHER"; Int(LF(I)); " ";: Next I
 550 Print: Print: Print "AREAS OF KNOWLEDGE:";
-For I = 1 To NA: Print AK$(AO(I)); AR(I),:
-Next I: Print "ALL OTHERS"; Int(P5 / 2 + .5)
+For I = 1 To NA
+    If AO(I) >= 1 And AO(I) <= 40 Then
+        Print AK$(AO(I)); " "; Int(AR(I)); ", ";
+    End If
+Next I
+Print "ALL OTHERS"; Int(P5 / 2 + .5)
 560 Print: X = 0: Input "ENTER 0 TO START OVER, 1 TO CHANGE PRIMARY TRAITS"; X
 570 If X = 0 Then 95 Else GoTo 280
 580 Rem VER. 1 JOE ULOWETZ 9/16/80
