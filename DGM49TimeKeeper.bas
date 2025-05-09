@@ -7,4 +7,5 @@ Rem original author Jim Holz
 Rem added error checking for negative values
 7 If HH > 24 Or TM > 59 Or HH < 0 Or TM < 0 Then GoTo 1
 9 Print: Print "PRESS ONE OF THE FOLLOWING FOR TIME KEEPING..."
-11 INPUT "S = (1 SEGMENT), R = (1 ROUND), T = (1 TURN)": A1$
+11 Input "S = (1 SEGMENT), R = (1 ROUND), T = (1 TURN)"; A1$
+
