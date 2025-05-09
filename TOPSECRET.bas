@@ -10,12 +10,12 @@ Rem ------------------------------------------
 1 Randomize Timer
 2 Option Base 1
 29 Rem AGENT KNOWLEDGE DATA
-30 Dim AK$(40)
-For I = 1 To 40
+30 Dim AK$(38)
+For I = 1 To 38
     Read AK$(I)
 Next I
 31 Data "AGRICULTURE","ANIMAL SCIENCE","ARCHlTECTURE","ART & CRAFT","ASTRONOMY","SPACE SCIENCE","BIOLOGY/BlOCHEMISTRY","BOTANY","CHEMISTRY","COMPUTER SCIENCE","ECOLOGY/EARTH SCIENCE","ECONOMICS/FINANCE","EDUCATION/INDOCTRINATION","ENG, AERONAUTICAL","ENG, CONSTRUCTION/CIVIL","ENG, ELECTRICAL","ENG, HYDRAULIC","ENG, INDUSTRIAL","ENG, MECHANICAL","ENG, TRANSPORTATION"
-32 Data "FINE ARTS","GEOGRAPHY","GEOLOGY","HOME ECONOMICS","LAW","LITERATURE","MATHEMATICS/ACCOUNTlNG","MEDlClNE/PHYSIOLOGY","METALLURGY","MILITARY SCIENCE/WEAPONRY","PHOTOGRAPHY","PHYSICAL EDUCATION","PHYSICS","POLITICAL SCIENCE/IDEOLOGY","PSYCHOLOGY","RELIGION","SOCIAL SCIENCES","WORLD HISTORY/CURRENT AFFAIRS","","CHOICE"
+32 Data "FINE ARTS","GEOGRAPHY","GEOLOGY","HOME ECONOMICS","LAW","LITERATURE","MATHEMATICS/ACCOUNTlNG","MEDlClNE/PHYSIOLOGY","METALLURGY","MILITARY SCIENCE/WEAPONRY","PHOTOGRAPHY","PHYSICAL EDUCATION","PHYSICS","POLITICAL SCIENCE/IDEOLOGY","PSYCHOLOGY","RELIGION","SOCIAL SCIENCES","WORLD HISTORY/CURRENT AFFAIRS","CHOICE"
 
 Rem HEIGHT AND WEIGHT PARAMETERS
 40 Dim HM(10) As Integer
@@ -28,7 +28,7 @@ Rem HS is short height table
 44 HS(1) = -8: HS(2) = -7: HS(3) = -6: HS(4) = -5: HS(5) = -4: HS(6) = -4: HS(7) = -3: HS(8) = -3: HS(9) = -2: HS(10) = -2
 Rem HS is tall height table
 45 HT(1) = 3: HT(3) = 3: HT(3) = 3: HT(4) = 4: HT(5) = 5: HT(6) = 6: HT(7) = 5: HT(8) = 5: HT(9) = 6: HT(10) = 7
-46 Dim LF(5): Dim AO(10): Dim AR(10)
+46 Dim LF(5): Dim AO(15): Dim AR(15)
 Dim WM(10): Dim WL(10): Dim WH(10)
 WM(1) = 0: WM(2) = -10: WM(3) = -5: WM(4) = -5: WM(5) = 0: WM(6) = 0: WM(7) = 5: WM(8) = 10: WM(9) = 15: WM(10) = 0
 WL(1) = -35: WL(2) = -30: WL(3) = -25: WL(4) = -20: WL(5) = -15: WL(6) = -15: WL(7) = -10: WL(8) = -10: WL(9) = -10: WL(10) = -10
@@ -152,7 +152,7 @@ For I = 1 To NA
         AO(I) = Int((X + 1) / 2)
         If AO(I) < 1 Then AO(I) = 1
     Else
-        AO(I) = 39
+        AO(I) = 38
     End If
 
     If I > 1 And AO(I) <> 39 Then
@@ -181,10 +181,10 @@ If GL = 1 Then M$ = "CONTACTS/GLASSES": GoTo 520: Else If GL = 2 Then M$ = "GLAS
 520 Print Tab(50); M$
 530 Print Tab(56 - Len(RC$)); "RACE: "; RC$
 540 Print: Print "LANGUAGES:";: Print "NATIVE"; LF(1); " ";: If NL > 1 Then For I = 2 To NL: Print "OTHER"; Int(LF(I)); " ";: Next I
-550 Print: Print: Print "AREAS OF KNOWLEDGE:";
+550 Print: Print: Print "AREAS OF KNOWLEDGE:": Print
 For I = 1 To NA
     If AO(I) >= 1 And AO(I) <= 40 Then
-        Print AK$(AO(I)); " "; Int(AR(I)); ", ";
+        Print AK$(AO(I)); " "; Int(AR(I))
     End If
 Next I
 Print "ALL OTHERS"; Int(P5 / 2 + .5)
