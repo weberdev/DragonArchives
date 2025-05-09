@@ -1,10 +1,10 @@
-Rem I found this program in a Dragon magazine on Archive.org. I think the original author is still active.
-
 Rem ------------------------------------------
 Rem Top Secret Agent Generator
 Rem Original: Joe Ulowetz, Dragon Magazine (1980)
 Rem Update: Ian Weber, 2025
-Rem No challenge to
+Rem No challenge to TSR, WotC, or other copyright holders is intended.
+Rem Top Secret originally written by Merle M. Rasmussen, and edited by Allen Hammack
+rem This is an archival translation into QBASIC intended to maintain as much of the original structure and functioning as possible.
 Rem ------------------------------------------
 
 1 Randomize Timer
