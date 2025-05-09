@@ -23,6 +23,28 @@ Rem added error checking for negative values
 39 If (TM + MI) > 10 And (TM + MI) < 30 Then Y = 0
 41 If (TM + MI) > 39 Then Y = 0
 43 If Y = 1 Then GoTo 50 Else GoTo 11
-50 M = Int(Rnd * 6): If M < 6 Then GoTo 11
+50 M = Int(Rnd * 6 + 1): If M < 6 Then GoTo 11
 60 Print: Input "LEVEL BELOW SURFACE"; L: Restore: P = Int(Rnd * 12)
-70 PRINT
+70 Print: On L GOTO 1000, 2000, 3000
+80 Q = Int(Rnd * 12): For I = 1 To Q: Read M$, N, T, H, A, C, D, S: Next I
+90 B = Int(Rnd * N) * T
+100 Print M$: Print "NUMBER APPEARING: "; B
+110 Print "HIT POINTS: ";: For I = 1 To B: Print Int(Rnd * H) + A;: Next I: Print
+120 Print "ARMOR CLASS: "; C
+130 Print "MAX HIT DAMAGE: "; D
+140 If S = 0 Then GoTo 9
+150 Print "INTELLIGENT MONSTER REACTION: ";
+Rem Ian Comment: I don't think this works semantically in QBASIC. Maybe it did at one point?
+Rem 160 R = Int(Rnd * 6) * 2
+Rem /this/ should work.
+160 R = Int(Rnd * 6 + 1) + Int(Rnd * 6 + 1)
+170 If R = 2 Then Print "ATTACKS IMMEDIATELY!": GoTo 9
+180 If R < 6 Then Print "HOSTILE REACTION": GoTo 9
+190 If R < 9 Then Print "UNCERTAIN": GoTo 9
+200 If R < 12 Then Print "FRIENDLY": GoTo 9
+210 If R = 12 Then Print "VOLUNTEERS HELP": GoTo 9
+220 END
+
+1000 If P < 9 Then GoTo 80
+2000 If P < 4 Then GoTo 80
+3000 If P = 1 Then GoTo 80
