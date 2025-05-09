@@ -43,8 +43,37 @@ Rem /this/ should work.
 190 If R < 9 Then Print "UNCERTAIN": GoTo 9
 200 If R < 12 Then Print "FRIENDLY": GoTo 9
 210 If R = 12 Then Print "VOLUNTEERS HELP": GoTo 9
-220 END
+220 End
 
 1000 If P < 9 Then GoTo 80
+1010 If P = 12 Then For I = 1 To 24: Read M$, N, T, H, A, C, D, S: Next I: GoTo 80
+1020 For I = 1 To 12: Read M$, N, T, H, A, C, D, S: Next I: GoTo 80
+
 2000 If P < 4 Then GoTo 80
+2010 If P < 10 Then For I = 1 To 12: Read M$, N, T, H, A, C, D, S: Next I: GoTo 80
+2020 For I = 1 To 24: Read M$, N, T, H, A, C, D, S: Next I: GoTo 80
+
 3000 If P = 1 Then GoTo 80
+3010 If P < 5 Then For I = 1 To 12: Read M$, N, T, H, A, C, D, S: Next I: GoTo 80
+3020 For I = 1 To 24: Read M$, N, T, H, A, C, D, S: Next I: GoTo 80
+
+4100 Data "KOBOLD",4,3,4,0,7,4,1,"SEER",2,1,8,0,9,8,1
+4110 Data "ORC",5,1,8,0,7,6,1,"SKELETON",6,1,4,0,6,6,0
+4120 Data "GIANT RAT",4,3,4,0,7,4,0,"ZOMBIE",4,1,8,0,8,8,0
+4130 Data "BANDIT",5,1,8,0,6,6,1,"GIANT SPIDER",3,1,4,1,8,4,0
+4140 Data "STIRGE",5,1,4,0,7,3,0,"FOOTPAD",4,1,8,0,7,6,1
+4150 Data "ELF",6,1,6,0,5,10,1,"GELATINOUS CUBE",1,1,12,0,8,8,0
+4160 Data "HOBGOBLIN",5,1,8,0,6,8,1,"GNOLL",5,1,6,0,8,8,1
+4170 Data "GIANT TOAD",6,1,12,1,7,6,0,"GHOUL",4,1,6,0,8,8,0
+4180 Data "WARRIOR",5,1,8,0,8,8,1,"CONJURER",4,1,12,0,9,8,1
+4190 Data "SHAMAN",5,1,8,0,8,8,1,"ROBBER",4,1,8,0,8,8,1
+4200 Data "LEPRECHAUN",4,2,4,0,8,4,1,"RUST MONSTER",1,1,20,0,9,2,0
+4210 Data "PIERCER",1,8,0,3,6,0,"CARRION CRAWLER",1,1,18,1,7,0,0
+4220 Data "BUGBEAR",4,2,8,1,5,8,0,"OGRE",4,1,24,1,6,10,0
+4230 Data "WIGHT",3,1,18,0,5,0,0,"HARPY",3,1,8,0,7,4,0
+4240 Data "TROLL",1,1,36,3,6,6,0,"WERERAT",4,1,8,0,7,4,0
+4250 Data "OCHRE JELLY",1,1,30,2,8,0,0,"DWARF",6,3,6,0,7,6,1
+4260 Data "WEREWOLF",2,1,12,1,8,8,0,"GIANT TICK",5,1,8,0,7,8,0
+4270 Data "GIANT SNAKE",2,1,32,0,5,10,0,"SHRIEKER",4,2,24,0,7,8,0
+
+
