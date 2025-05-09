@@ -17,34 +17,21 @@ Next I
 32 Data "FINE ARTS","GEOGRAPHY","GEOLOGY","HOME ECONOMICS","LAW","LITERATURE","MATHEMATICS/ACCOUNTlNG","MEDlClNE/PHYSIOLOGY","METALLURGY","MILITARY SCIENCE/WEAPONRY","PHOTOGRAPHY","PHYSICAL EDUCATION","PHYSICS","POLITICAL SCIENCE/IDEOLOGY","PSYCHOLOGY","RELIGION","SOCIAL SCIENCES","WORLD HISTORY/CURRENT AFFAIRS","","CHOICE"
 
 Rem HEIGHT AND WEIGHT PARAMETERS
-40 Dim HM(10)
-41 Dim HS(10)
-42 Dim HT(10)
-43 For I = 1 To 10
-    Read HM(I)
-Next I
-Data 0,-1,-1,0,0,1,1,2,2,0
-For I = 1 To 10
-    Read HS(I)
-Next I
-Data -8,-7,-6,-5,-4,-4,-3,-3,-2,-2
-For I = 1 To 10
-    Read HT(I)
-Next I
-Data 3,3,3,4,4,4,5,5,6,7
-Rem 45 Data 3,3,3,4,4,4,5,5,6,7
-Rem RANDOM
-46 Dim LF(5), AO(10), AR(10)
-Dim WM(10), WL(10), WH(10)
-For I = 1 To 10
-    Read WM(I)
-Next I
-For I = 1 To 10
-    Read WL(I)
-Next I
-For I = 1 To 10
-    Read WH(I)
-Next I
+40 Dim HM(10) As Integer
+41 Dim HS(10) As Integer
+42 Dim HT(10) As Integer
+Rem I brute forced this because DATA was breaking. No idea why.
+Rem HM is primary height table
+43 HM(1) = 0: HM(2) = -1: HM(3) = -1: HM(4) = 0: HM(5) = 0: HM(6) = 1: HM(7) = 1: HM(8) = 2: HM(9) = 2: HM(10) = 0
+Rem HS is short height table
+44 HS(1) = -8: HS(2) = -7: HS(3) = -6: HS(4) = -5: HS(5) = -4: HS(6) = -4: HS(7) = -3: HS(8) = -3: HS(9) = -2: HS(10) = -2
+Rem HS is tall height table
+45 HT(1) = 3: HT(3) = 3: HT(3) = 3: HT(4) = 4: HT(5) = 5: HT(6) = 6: HT(7) = 5: HT(8) = 5: HT(9) = 6: HT(10) = 7
+46 Dim LF(5): Dim AO(10): Dim AR(10)
+Dim WM(10): Dim WL(10): Dim WH(10)
+WM(1) = 0: WM(2) = -10: WM(3) = -5: WM(4) = -5: WM(5) = 0: WM(6) = 0: WM(7) = 5: WM(8) = 10: WM(9) = 15: WM(10) = 0
+WL(1) = -35: WL(2) = -30: WL(3) = -25: WL(4) = -20: WL(5) = -15: WL(6) = -15: WL(7) = -10: WL(8) = -10: WL(9) = -10: WL(10) = -10
+WH(1) = 15: WH(2) = 20: WH(3) = 25: WH(4) =30: WH(5) = 40: WH(6) = 50: WH(7) = 75: WH(8) = 100: WH(9) = 125: WH(10) = 150
 47 Data 0,-10,-5,-5,0,0,5,10,15,0,-35,-30,-25,-20,-15,-15,-10,-10,-10,-10,15,20,25,30,40,50,75,100,125,150
 50 Print "ADMINISTRATOR": Print " FILE 080"
 60 Print: Print: Print " TOP SECRET"
