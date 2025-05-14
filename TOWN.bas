@@ -1,3 +1,5 @@
+Rem this is Town from Dragon Magazine 41.
+
 Cls
 Dim A(40)
 Randomize Timer
