@@ -1,5 +1,5 @@
 Rem Royal, originally written by Marc Elwinger, published in Dragon Magazine 41, September 1980
-rem Updated to QBASIC by Ian Weber
+Rem Updated to QBASIC by Ian Weber
 
 1 Dim A(40)
 Cls
@@ -21,4 +21,17 @@ Next Z
     R = Rnd(20)
     R(Z) = 0
 Next Z
+6 Data "YORK","LANCASTER","WINDSOR","KENT","SUSSEX","SHEFFIELD","CHESHIRE"
+7 Data "CORNWALL","DEVON","NORFOLK","SUFFOLK","WESTMORELAND","ASHFORD","LINCOLN"
+8 Data "WATERFORD","DUBLIN","CORK","KERRY","MAYO","KILDARE"
+9 Input Z
+10 Cls
+If Rnd(1) < 0.5 Then
+    Print "LONG LIVE THE KING"
+    A(1) = 29
+Else
+    Print "THE KING IS DEAD! LONG LIVE THE KING"
+    A(1) = 18
+End If
+
 
