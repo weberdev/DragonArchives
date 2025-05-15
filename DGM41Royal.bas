@@ -4,7 +4,6 @@ Rem Updated to QBASIC by Ian Weber
 Randomize Timer
 
 1 Dim A(40): Dim A$(40)
-Cls
 For Z = 1 To 20
     A(Z) = 0
 Next Z
@@ -31,8 +30,8 @@ A(2) = 10: A$(2) = A$(R2)
 6 Data "YORK","LANCASTER","WINSOR","KENT","SUSSEX","SHEFFIELD","CHESHIRE"
 7 Data "CORNWALL","DEVON","NORFORK","SUFFORK","WESTMORELAND","ASHFORD","LINCOLN"
 8 Data "EXETER","DURHAM","CORK","KERRY","MAYO","KILDARE"
-10 Cls
-If Rnd(1) Then
+10
+If Rnd(1) < .95 Then
     Print "LONG LIVE THE KING"
     A(1) = 20
 Else
@@ -72,7 +71,6 @@ End If
 Rem Slight editorial adjustment, clarifying the intial line
 Rem 130 INPUT Z
 130 Input "Press Enter to continue..."; dummy$
-140 Cls
 Print "THE KING IS OF THE HOUSE "; A$(1)
 Print "THE QUEEN OF THE HOUSE "; A$(2)
 150 A(31) = Int(Rnd * 5)
@@ -82,32 +80,32 @@ For Z = 1 To A(31)
     170 If (A(28) = 0) + (Rnd(1) > .85) Then GoTo 200
     180 Print "THE QUEEN'S FATHER OF THE HOUSE "; A$(2): A(28) = 0
     190 A(2) = A(2) + 3: A(1) = A(1) + 1: GoTo 230
-    200 GoSub 1000: A(Q) = A(Q) + 2: Print "THE KINGDOM"; Z; "OF THE HOUSE"; A$(Q)
+    200 GoSub 1000: A(Q) = A(Q) + 2: Print "THE KINGDOM"; Z; "OF THE HOUSE "; A$(Q)
 230 Next Z
-
-231 E = 0 ' Now it's safe to reset E
+Input "Press Enter to continue..."; dummy$
+231 E = 0`
 232 A(32) = E ' Store E baseline *before* we start adding nobles
 
 240 A$ = "DUKE": X = Int((Rnd * 3) + 1): N = 5: GoSub 245
 
-245 Print: GoSub 1000: If (A(28) = 1) * (Rnd(1) < .80) Then GoSub 2000
+245 Print: GoSub 1000: If (A(28) = 1) * (Rnd(1) < .80) Then GoSub 2000: Return
 
 290 A$ = "MARQUIS": X = Int((Rnd * 3) + 1): N = 4: GoSub 245
 295 A(33) = E - A(32)
 
-300 Input "Press Enter to continue..."; dummy$: Cls
+300 Input "Press Enter to continue..."; dummy$
 A$ = "COUNT": R = E * Int((Rnd * 3) + 3): N = 1
 302 X = R: If R > 7 Then X = 7: R = R - 7
-304 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 0 Then GoTo 302
+304 GoSub 245: Input "Press Enter to continue..."; dummy$: If R > 0 Then GoTo 302
 308 A(34) = E - A(33)
 
-310 Input "Press Enter to continue..."; dummy$: Cls
+310 Input "Press Enter to continue..."; dummy$
 A$ = "EARL": X = Int((Rnd * 5) + 1): N = 2: GoSub 245
 
-320 Input "Press Enter to continue..."; dummy$: Cls
+320 Input "Press Enter to continue..."; dummy$
 A$ = "COUNT": R = E * Int((Rnd * 3) + 1): N = 1
 330 X = R: If R > 7 Then X = 7: R = R - 7
-340 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 0 Then GoTo 330
+340 GoSub 245: Input "Press Enter to continue..."; dummy$: If R > 0 Then GoTo 330
 350 A(35) = E - A(34)
 999 End
 
