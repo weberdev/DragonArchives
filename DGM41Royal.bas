@@ -94,10 +94,22 @@ Rem Slight editorial adjustment, clarifying the intial line
 Rem 290 INPUT Z
 290 Input "Press Enter to continue..."; dummy$: Cls: X = Int((Rnd * 3) + 1): A$ = "MARQUIS": N = 4: GoSub 245
 295 A(33) = E - A(32)
-300 Input "Press Enter to continue..."; dummy$: CLS:
-
+300 Input "Press Enter to continue..."; dummy$: Cls: R = E * Int((Rnd * 3) + 3): A$ = "COUNT": N = 1
+302 X = R: If R > 7 Then X = 7: R = R - 7
+304 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 7 GoTo 302
+308 A(34) = E - A(33)
+310 Input "Press Enter to continue..."; dummy$: Cls: X = Int((Rnd * 5) + 1): A$ = "EARL": N = 2: GoSub 245
+320 Input "Press Enter to continue..."; dummy$: Cls: R = E * Int((Rnd * 3) + 3): A$ = "COUNT": N = 1
+330 X = R: If R > 7 Then X = 7: R = R - 7
+340 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 7 Then GoTo 330
+350 A(35) = E - A(34)
+999 End
 
 1000 Q = 0: For W = 1 To 20: Q = Q + A(W): Next W: Q = Q * Rnd(1): For W = 1 To 20
     1010 Q = Q - A(W): If Q <= 0 Then Q = W: Return
 1020 Next W
-
+2000 A(28) = 0: Q = 2: Print "THE QUEEN'S FATHER": Return
+2010 A(30) = A(30) - 1: Q = 1: Print "THE KING'S UNCLE": Return
+2020 A(23) = A(23) - 1: Q = 1: Print "THE KING'S BROTHER": Return
+2030 A(29) = A(29) - 1: Q = 2: Print "THE QUEEN'S BROTHER": Return
+32000 FOR Z=1 to 20 STEP 2: PRINT A(Z),A(Z+1):NEXT Z
