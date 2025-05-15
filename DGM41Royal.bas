@@ -55,4 +55,13 @@ End If
 End If
 70 If A(26) > 0 Then Print "AND"; A(26); "PRINCES"
 80 If (Rnd(1) < 0.6) + ((A(22) = 0) * (Rnd(1) < 0.1)) Then A(27) = A(27) + 1: GoTo 80
-
+90 If A(27) > 0 Then Print A(27); "PRINCESS"
+100 If (A(22) > 0) * (Rnd(1) < .35) Then A(28) = 1
+110 If (A(22) > 0) * (Rnd(1) < 0.4) Then
+    A(29) = A(29) + 1
+    GoTo 110
+End If
+120 If Rnd(1) < 0.3 Then
+    A(30) = A(30) + 1
+    GoTo 120
+End If
