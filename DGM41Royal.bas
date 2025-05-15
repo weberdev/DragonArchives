@@ -53,4 +53,6 @@ End If
 60 If (A(25)) * (Rnd(1) < .65) Then
     A(26) = A(26) + 1: GoTo 60
 End If
-70
+70 If A(26) > 0 Then Print "AND"; A(26); "PRINCES"
+80 If (Rnd(1) < 0.6) + ((A(22) = 0) * (Rnd(1) < 0.1)) Then A(27) = A(27) + 1: GoTo 80
+
