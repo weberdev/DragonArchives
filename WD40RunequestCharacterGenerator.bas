@@ -17,5 +17,17 @@ Rem 30 home
 160 Data 6,-10,-5,0,5,10,5
 170 Dim PB(4, 6)
 180 For A = 1 To 4: For B = 0 To 6: Read PB(A, B): Next B, A
+190 Rem DEFENCE BONUS
+200 Data 1,-5,0,0,0,5,5
+210 Data 4,-10,-5,0,5,10,5
+220 Data 5,-5,0,0,0,5,5
+230 Data 6,-10,-5,0,5,10,5
+240 Dim DB(4, 6)
+250 For A = 1 To 4: For B = 0 To 6: Read DB(A, B): Next B, A
+260 Rem HIT POINT BONUS
+270 Data 3,-2,-1,0,1,2,1
+280 Data 5,-1,0,0,0,1,1
+290 Dim HP(2, 6)
+300 For A = 1 To 2: For B = 0 To 6: Read HP(A, B): Next B, A
 
 
