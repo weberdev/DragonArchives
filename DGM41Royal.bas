@@ -80,14 +80,15 @@ If Rnd < 0.1 Then Print "THE KINGDOM IS AN ISLAND"
 160 Print "THE NEIGHBORING KINGDOMS"
 For Z = 1 To A(31)
     170 If (A(28) = 0) + (Rnd(1) > .85) Then GoTo 200
-    180 Print "THE QUEEN'S FATHER OF THE HOUSE 2": A(28) = 0
+    180 Print "THE QUEEN'S FATHER OF THE HOUSE "; A$(2): A(28) = 0
     190 A(2) = A(2) + 3: A(1) = A(1) + 1: GoTo 230
-    200 GoSub 1000: A(Q) = A(Q) + 2: Print "THE KINGDOM"; Z; "OF THE HOUSE"; Q
-    220 E = 0
+    200 GoSub 1000: A(Q) = A(Q) + 2: Print "THE KINGDOM"; Z; "OF THE HOUSE"; A$(Q)
 230 Next Z
 
-240 A$ = "DUKE": X = Int((Rnd * 3) + 1): N = 5: GoSub 245: GoTo 290
-'241 A(32) = E
+231 E = 0 ' Now it's safe to reset E
+232 A(32) = E ' Store E baseline *before* we start adding nobles
+
+240 A$ = "DUKE": X = Int((Rnd * 3) + 1): N = 5: GoSub 245
 
 245 Print: GoSub 1000: If (A(28) = 1) * (Rnd(1) < .80) Then GoSub 2000
 
