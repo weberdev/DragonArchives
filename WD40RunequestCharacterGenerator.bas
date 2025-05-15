@@ -49,5 +49,17 @@ Rem 30 home
 470 Data 6,-10,-5,0,5,10,5
 480 Dim SB(4, 7)
 490 For A = 1 To 4: For B = 1 To 7: Read SB(A, B): Next B, A
+500 Rem Manipulation bonus
+510 Data 1,-5,0,0,0,5,5
+520 Data 4,-10,-5,0,5,10,5
+530 Data 5,-5,0,0,0,5,5
+540 Data 6,-10,-5,0,5,10,5
+550 Dim MB(4, 7)
+560 For A = 1 To 4: For B = 1 To 7: Read MB(A, B): Next B, A
+570 Rem KNOWLEDGE BONUS
+580 Data 4,-10,-5,0,5,10,5
+590 Data 5,-5,0,0,0,5,5
+600 Dim KB(2, 7)
+610 For A = 1 To 2: For B = 1 To 7: Read KB(A, B): Next B, A
 
 
