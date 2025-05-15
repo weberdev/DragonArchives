@@ -61,5 +61,25 @@ Rem 30 home
 590 Data 5,-5,0,0,0,5,5
 600 Dim KB(2, 7)
 610 For A = 1 To 2: For B = 1 To 7: Read KB(A, B): Next B, A
-
-
+620 Rem STRIKE RANK
+630 Data 22,15,7
+640 Dim S1(3)
+650 For A = 1 To 3: Read S1(A): Next A
+660 Data 19,16,13,9,6
+670 Dim S2(5)
+680 For A = 1 To 5: Read S2(A): Next A
+690 Rem RACES
+700 Data "HUMAN",3+00,3+00,3+00,3+00,3+00,3+00,3+00
+710 Data "BROO",2+06,1+12,2+06,3+00,3+00,3+00,2+00
+720 Data "CRESTED DRAGONNEWT",2+00,3+00,2+00,3+00,2+00,2+06,3+00
+730 Data "DUCK",2+01,2+06,1+02,3+00,3+00,2+06,2+00
+740 Data "DWARF",4+00,2+06,2+00,3+00,3+00,2+06,3+00
+750 Data "ELF",2+02,3+00,2+00,4+00,2+06,3+00,3+00
+760 Data "MOROKANTH",3+00,3+00,3+00,3+00,3+00,2+03,3+00
+770 Data "OGRE",2+12,2+06,3+00,2+06,3+00,3+00,2+06
+780 Data "DARK TROLL",3+06,3+00,3+06,3+00,3+00,3+00,3+00
+790 Dim R$(9, 7)
+800 For A = 1 To 9: For B = 1 To 8: Read R$(A, B): Next B, A
+810 Rem
+820 Rem Creating the character
+830 DEF FN D(A) = INT(RND*A
