@@ -82,4 +82,22 @@ Rem 30 home
 800 For A = 1 To 9: For B = 1 To 8: Read R$(A, B): Next B, A
 810 Rem
 820 Rem Creating the character
-830 DEF FN D(A) = INT(RND*A
+830
+
+
+
+
+
+
+
+
+REM Ian here, functions cannot be declared inline in my version of BASIC, thus we make a style choice.
+Function D6
+    D6 = Int(Rnd * 6) + 1
+End Function
+Function CR (A)
+    CR = Int((CH(A) - 1) / 4) + 1
+End Function
+
+
+
