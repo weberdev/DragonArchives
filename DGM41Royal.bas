@@ -69,8 +69,8 @@ Rem Slight editorial adjustment, clarifying the intial line
 Rem 130 INPUT Z
 130 Input "Press Enter to continue..."; dummy$
 140 Cls
-Print "THE KING IS OF THE HOUSE "; A
-Print "THE QUEEN OF THE HOUSE "; B
+Print "THE KING IS OF THE HOUSE "; A$
+Print "THE QUEEN OF THE HOUSE "; B$
 150 A(31) = Int(Rnd * 5)
 If Rnd < 0.1 Then Print "THE KINGDOM IS AN ISLAND"
 160 Print "THE NEIGHBORING KINGDOMS"
