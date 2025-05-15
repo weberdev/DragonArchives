@@ -56,7 +56,7 @@ End If
 60 If (A(25)) * (Rnd(1) < .65) Then
     A(26) = A(26) + 1: GoTo 60
 End If
-70 If A(26) > 0 Then Print "AND"; A(26); "PRINCES"
+70 If A(26) > 0 Then Print "AND"; A(26); " PRINCES"
 80 If (Rnd(1) < 0.6) + ((A(22) = 0) * (Rnd(1) < 0.1)) Then A(27) = A(27) + 1: GoTo 80
 90 If A(27) > 0 Then Print A(27); "PRINCESS"
 100 If (A(22) > 0) * (Rnd(1) < .35) Then A(28) = 1
@@ -83,14 +83,14 @@ For Z = 1 To A(31)
     200 GoSub 1000: A(Q) = A(Q) + 2: Print "THE KINGDOM"; Z; "OF THE HOUSE "; A$(Q)
 230 Next Z
 Input "Press Enter to continue..."; dummy$
-231 E = 0`
-232 A(32) = E ' Store E baseline *before* we start adding nobles
+231 E = 0
+232 A(32) = E
 
-240 A$ = "DUKE": X = Int((Rnd * 3) + 1): N = 5: GoSub 245
+240 A$ = "DUKE": X = Int((Rnd * 3) + 1): N = 5: Cls: GoSub 245
 
 245 Print: GoSub 1000: If (A(28) = 1) * (Rnd(1) < .80) Then GoSub 2000: Return
 
-290 A$ = "MARQUIS": X = Int((Rnd * 3) + 1): N = 4: GoSub 245
+290 A$ = "MARQUIS": X = Int((Rnd * 3) + 1): N = 4: Cls: GoSub 245
 295 A(33) = E - A(32)
 
 300 Input "Press Enter to continue..."; dummy$
