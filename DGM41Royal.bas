@@ -3,30 +3,34 @@ Rem Updated to QBASIC by Ian Weber
 
 Randomize Timer
 
-1 Dim A(40)
+1 Dim A(40): Dim A$(40)
 Cls
 For Z = 1 To 20
     A(Z) = 0
 Next Z
-For Z = 1 To 16
-    Read A$
-    B$ = A$
-    2 R = Int(Rnd * 20) + 1
-    If R > 1 Then GoTo 2
-    3 A(R) = 1
-    R = Int(Rnd * 20) + 1
-    If R > 1 Then GoTo 3
-    4 A(1) = 1
-    Print A$, "="; A, B$; "="; B
+
+For Z = 1 To 10
+    Read H$
+    5 R = Int(Rnd * 20) + 1
+    If A(R) <> 0 Then GoTo 5
+    A(R) = 1
+    A$(R) = H$
 Next Z
-5 For Z = 1 To 20
-    R = Int(Rnd * 20) + 1
-    A(Z) = 0
-Next Z
+
+Do
+    R1 = Int(Rnd * 20) + 1
+Loop While A$(R1) = ""
+
+Do
+    R2 = Int(Rnd * 20) + 1
+Loop While A$(R2) = "" Or R2 = R1
+
+A(1) = 20: A$(1) = A$(R1)
+A(2) = 10: A$(2) = A$(R2)
+
 6 Data "YORK","LANCASTER","WINSOR","KENT","SUSSEX","SHEFFIELD","CHESHIRE"
 7 Data "CORNWALL","DEVON","NORFORK","SUFFORK","WESTMORELAND","ASHFORD","LINCOLN"
 8 Data "EXETER","DURHAM","CORK","KERRY","MAYO","KILDARE"
-9 Input Z
 10 Cls
 If Rnd(1) Then
     Print "LONG LIVE THE KING"
@@ -69,8 +73,8 @@ Rem Slight editorial adjustment, clarifying the intial line
 Rem 130 INPUT Z
 130 Input "Press Enter to continue..."; dummy$
 140 Cls
-Print "THE KING IS OF THE HOUSE "; A$
-Print "THE QUEEN OF THE HOUSE "; B$
+Print "THE KING IS OF THE HOUSE "; A$(1)
+Print "THE QUEEN OF THE HOUSE "; A$(2)
 150 A(31) = Int(Rnd * 5)
 If Rnd < 0.1 Then Print "THE KINGDOM IS AN ISLAND"
 160 Print "THE NEIGHBORING KINGDOMS"
@@ -81,27 +85,28 @@ For Z = 1 To A(31)
     200 GoSub 1000: A(Q) = A(Q) + 2: Print "THE KINGDOM"; Z; "OF THE HOUSE"; Q
     220 E = 0
 230 Next Z
-240 X = Int((Rnd * 3) + 1): N = 5: GoSub 245: GoTo 290
-241 A(32) = E
+
+240 A$ = "DUKE": X = Int((Rnd * 3) + 1): N = 5: GoSub 245: GoTo 290
+'241 A(32) = E
+
 245 Print: GoSub 1000: If (A(28) = 1) * (Rnd(1) < .80) Then GoSub 2000
-250 If (A(30) > 0) * (Rnd(1) < .05) Then GoSub 2010
-260 If (A(23) > 0) * (Rnd(1) < 0.6) Then GoSub 2020
-265 E = E + 1
-270 If (A(29) > 0) * (Rnd(1) < .5) Then GoSub 2030
-280 A(Q) = A(Q) + N: Print "THE "; A$; " OF THE HOUSE OF "; Q: X = X - 1: If X > 0 Then GoTo 245
-281 Return
-Rem Slight editorial adjustment, clarifying the intial line
-Rem 290 INPUT Z
-290 Input "Press Enter to continue..."; dummy$: Cls: X = Int((Rnd * 3) + 1): A$ = "MARQUIS": N = 4: GoSub 245
+
+290 A$ = "MARQUIS": X = Int((Rnd * 3) + 1): N = 4: GoSub 245
 295 A(33) = E - A(32)
-300 Input "Press Enter to continue..."; dummy$: Cls: R = E * Int((Rnd * 3) + 3): A$ = "COUNT": N = 1
+
+300 Input "Press Enter to continue..."; dummy$: Cls
+A$ = "COUNT": R = E * Int((Rnd * 3) + 3): N = 1
 302 X = R: If R > 7 Then X = 7: R = R - 7
-304 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 7 GoTo 302
+304 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 0 Then GoTo 302
 308 A(34) = E - A(33)
-310 Input "Press Enter to continue..."; dummy$: Cls: X = Int((Rnd * 5) + 1): A$ = "EARL": N = 2: GoSub 245
-320 Input "Press Enter to continue..."; dummy$: Cls: R = E * Int((Rnd * 3) + 3): A$ = "COUNT": N = 1
+
+310 Input "Press Enter to continue..."; dummy$: Cls
+A$ = "EARL": X = Int((Rnd * 5) + 1): N = 2: GoSub 245
+
+320 Input "Press Enter to continue..."; dummy$: Cls
+A$ = "COUNT": R = E * Int((Rnd * 3) + 1): N = 1
 330 X = R: If R > 7 Then X = 7: R = R - 7
-340 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 7 Then GoTo 330
+340 GoSub 245: Input "Press Enter to continue..."; dummy$: Cls: If R > 0 Then GoTo 330
 350 A(35) = E - A(34)
 999 End
 
