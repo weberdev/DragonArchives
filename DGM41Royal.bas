@@ -6,7 +6,7 @@ Randomize Timer
 1 Dim A(40)
 Cls
 For Z = 1 To 20
-    R(Z) = 0
+    A(Z) = 0
 Next Z
 For Z = 1 To 16
     Read A$
@@ -16,12 +16,12 @@ For Z = 1 To 16
     3 A(R) = 1
     R = Rnd(20)
     If R > 1 Then GoTo 3
-    4 R(1) = 1
+    4 A(1) = 1
     Print A$, "="; A, B$; "="; B
 Next Z
 5 For Z = 1 To 20
     R = Rnd(20)
-    R(Z) = 0
+    A(Z) = 0
 Next Z
 6 Data "YORK","LANCASTER","WINSOR","KENT","SUSSEX","SHEFFIELD","CHESHIRE"
 7 Data "CORNWALL","DEVON","NORFORK","SUFFORK","WESTMORELAND","ASHFORD","LINCOLN"
@@ -112,4 +112,4 @@ Rem 290 INPUT Z
 2010 A(30) = A(30) - 1: Q = 1: Print "THE KING'S UNCLE": Return
 2020 A(23) = A(23) - 1: Q = 1: Print "THE KING'S BROTHER": Return
 2030 A(29) = A(29) - 1: Q = 2: Print "THE QUEEN'S BROTHER": Return
-32000 FOR Z=1 to 20 STEP 2: PRINT A(Z),A(Z+1):NEXT Z
+32000 For Z = 1 To 20 Step 2: Print A(Z), A(Z + 1): Next Z
