@@ -38,7 +38,19 @@ Else
 End If
 20 Print "AND THE ROYAL FAMILY": If Rnd(1) < 0.8 Then Print "THE QUEEN": A(2) = 10: A(22) = 1
 30 If Rnd(1) < 0.1 Then
-    A(1) = A(1) + 1
+    A(23) = A(23) + 1
     GoTo 30
 End If
-35 PRINT "THE KING HAS ";A(23); "BROTHERS"
+35 Print "THE KING HAS "; A(23); "BROTHERS"
+40 If Rnd(1) < 0.1 Then
+    A(24) = A(24) + 1
+    GoTo 40
+End If
+45 Print "THE KING HAS "; A(24); "UNMARRIED SISTERS"
+50 If (Rnd(1) < 0.65) + ((A(22) = 0) * (Rnd(1) < 0.1)) Then
+    A(25) = 1: Print "THE CROWN PRINCE"
+End If
+60 If (A(25)) * (Rnd(1) < .65) Then
+    A(26) = A(26) + 1: GoTo 60
+End If
+70
