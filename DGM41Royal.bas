@@ -11,16 +11,16 @@ Next Z
 For Z = 1 To 16
     Read A$
     B$ = A$
-    2 R = Rnd(20)
+    2 R = Int(Rnd * 20) + 1
     If R > 1 Then GoTo 2
     3 A(R) = 1
-    R = Rnd(20)
+    R = Int(Rnd * 20) + 1
     If R > 1 Then GoTo 3
     4 A(1) = 1
     Print A$, "="; A, B$; "="; B
 Next Z
 5 For Z = 1 To 20
-    R = Rnd(20)
+    R = Int(Rnd * 20) + 1
     A(Z) = 0
 Next Z
 6 Data "YORK","LANCASTER","WINSOR","KENT","SUSSEX","SHEFFIELD","CHESHIRE"
