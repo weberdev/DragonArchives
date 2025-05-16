@@ -55,4 +55,28 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 1010 Rem NEXT SCREEN
 1020 Input "next screen", PIC: Cls: Return
 2000 Rem --------
-2010
+2010 Rem collisions and aftermath
+2020 If N > 1.5 Then Return
+2030 For K = 1 To N - 1
+    2040 If SWP(N, 4) < SWP(K, 1) Then GoTo 2210
+    2050 If SWP(K, 4) < SWP(N, 1) Then GoTo 2210
+    2060 Print "COLLISION"; K; "AND "; N
+    Rem 2070 H=SWP(N,5)*SQR(SWP(N,2)*(1-SWP((N,3)*SWP(N,3))))
+    2070 H = SWP(N, 5) * Sqr(SWP(N, 2) * (1 - SWP(N, 3) * SWP(N, 3)))
+    2080 H = H + SWP(K, 5) * Sqr(SWP(K, 2) * (1 - SWP(K, 3) * SWP(K, 3)))
+    2090 SWP(K, 5) = SWP(N, 5) + SWP(K, 5): H = H / SWP(K, 5)
+    2100 SWP(K, 0) = SWP(N, 0) = SWP(K, 0)
+    2110 KF = SWP(N, 3): If KF > SWP(K, 3) Then KF = SWP(K, 3): SWP(K, 3) = Rnd * KF
+    2120 SWP(K, 2) = H * H / (1 - SWP(K, 3) * SWP(K, 3))
+    2130 GoSub 2300
+    2140 N = N - 1
+    2150 If K = N Then GoTo 2020
+    2160 For L = 0 To 5: SWP(N + 1, L) = SWP(K, L): Next L: V$(N + 1) = V$(K)
+    2170 For L = 0 To 5: SWP(K, L) = SWP(N, L): Next L: V$(K) = V$(N)
+    2180 For L = 0 To 5: SWP(N, L) = SWP(N + 1, L): Next L: V$(N) = V$(N + 1)
+    2190 For L = 0 To 5: SWP(N + 1, L) = 0: Next L: V$(N + 1) = ""
+    2200 GoTo 2020
+2210 Next K
+
+
+
