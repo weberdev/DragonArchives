@@ -90,7 +90,7 @@ Rem Bonus calculation function used to be here.
 870 Cls
 880 Let AK = 0: PA = 0: DE = 0: ST = 0: MA = 0: KN = 0: PER = 0
 890 For A = 1 To 7: Let CH(A) = 0: Next A
-900 For A = 1 To 9: Print Tab(5); A; ". "; R$(A, 0): Next A
+900 For A = 1 To 9: Print Tab(5); A; ". "; R$(A, 1): Next A
 910 Print: Input "WHAT RACE (1-9)? "; R
 920 For A = 1 To 7
     930 Let B1 = Val(Left$(R$(R, A), 1))
@@ -107,24 +107,24 @@ Rem Bonus calculation function used to be here.
 1040 For B = 1 To 7
     1050 Let FB = CR(B)
     1060 For C = 1 To 4
-        1070 If AB(C, 0) = B And FB < 5 Then Let AK = AK + AB(C, 5) + (AB(C, 6) * (FB - 5))
-        1080 If AB(C, 0) = B And FB > 5 Then Let AK = AK + AB(C, FB)
-        1090 If PB(C, 0) = B And FB < 5 Then Let PA = PA + PB(C, 5) + (PB(C, 6) * (FB - 5))
-        1100 If PB(C, 0) = B And FB > 5 Then Let PA = PA + PB(C, FB)
-        1110 If DB(C, 0) = B And FB < 5 Then Let DE = DE + DB(C, 5) + (DB(C, 6) * (FB - 5))
-        1120 If DB(C, 0) = B And FB > 5 Then Let DE = DE + DB(C, FB)
-        1130 If SB(C, 0) = B And FB < 5 Then Let ST = ST + SB(C, 5) + (SB(C, 6) * (FB - 5))
-        1140 If SB(C, 0) = B And FB > 5 Then Let ST = ST + SB(C, FB)
-        1150 If MB(C, 0) = B And FB < 5 Then Let MA = MA + MB(C, 5) + (MB(C, 6) * (FB - 5))
-        1160 If MB(C, 0) = B And FB > 5 Then Let MA = MA + MB(C, FB)
+        1070 If AB(C, 1) = B And FB < 5 Then Let AK = AK + AB(C, 5) + (AB(C, 6) * (FB - 5))
+        1080 If AB(C, 1) = B And FB > 5 Then Let AK = AK + AB(C, FB)
+        1090 If PB(C, 1) = B And FB < 5 Then Let PA = PA + PB(C, 5) + (PB(C, 6) * (FB - 5))
+        1100 If PB(C, 1) = B And FB > 5 Then Let PA = PA + PB(C, FB)
+        1110 If DB(C, 1) = B And FB < 5 Then Let DE = DE + DB(C, 5) + (DB(C, 6) * (FB - 5))
+        1120 If DB(C, 1) = B And FB > 5 Then Let DE = DE + DB(C, FB)
+        1130 If SB(C, 1) = B And FB < 5 Then Let ST = ST + SB(C, 5) + (SB(C, 6) * (FB - 5))
+        1140 If SB(C, 1) = B And FB > 5 Then Let ST = ST + SB(C, FB)
+        1150 If MB(C, 1) = B And FB < 5 Then Let MA = MA + MB(C, 5) + (MB(C, 6) * (FB - 5))
+        1160 If MB(C, 1) = B And FB > 5 Then Let MA = MA + MB(C, FB)
     1170 Next C
     1180 For C = 1 To 2
-        1190 If KB(C, 0) = B And FB > 5 Then Let KN = KN + KB(C, 5) + (KB(C, 6) * (FB - 5))
-        1200 If KB(C, 0) = B And FB <= 5 Then Let KN = KN + KB(C, FB)
-        1210 If PRB(C, 0) = B And FB > 5 Then Let PER = PER + PRB(C, 5) + (PRB(C, 6) * (FB - 5))
-        1220 If PRB(C, 0) = B And FB <= 5 Then Let PER = PER + PRB(C, FB)
-        1230 If HPB(C, 0) = B And FB > 5 Then Let HP = HP + HPB(C, 5) + (HPB(C, 6) * (FB - 5))
-        1240 If HPB(C, 0) = B And FB <= 5 Then Let HP = HP + HPB(C, FB)
+        1190 If KB(C, 1) = B And FB > 5 Then Let KN = KN + KB(C, 5) + (KB(C, 6) * (FB - 5))
+        1200 If KB(C, 1) = B And FB <= 5 Then Let KN = KN + KB(C, FB)
+        1210 If PRB(C, 1) = B And FB > 5 Then Let PER = PER + PRB(C, 5) + (PRB(C, 6) * (FB - 5))
+        1220 If PRB(C, 1) = B And FB <= 5 Then Let PER = PER + PRB(C, FB)
+        1230 If HPB(C, 1) = B And FB > 5 Then Let HP = HP + HPB(C, 5) + (HPB(C, 6) * (FB - 5))
+        1240 If HPB(C, 1) = B And FB <= 5 Then Let HP = HP + HPB(C, FB)
 1250 Next C, B
 1260 Rem LOCAL HITS
 1270 If HP < 4 Then Let LH = 1
@@ -146,7 +146,7 @@ Rem Bonus calculation function used to be here.
 1430 Rem THE PRINTOUT
 1440 Cls
 Rem commenting this line out, obvz 1450 IF A$ = "Y" then PRF 2
-1460 Print: Print NAME$; " THE "; R$(R, 0): Print
+1460 Print: Print NAME$; " THE "; R$(R, 1): Print
 1470 Print "STRENGTH:      "; CH(1); Tab(25); "LOCAL H.P.S."
 1480 Print "CONSTITUTION:  "; CH(2)
 1490 Print "SIZE:          "; CH(3); Tab(30); "LH = "; Int((CH(3) + CH(2)) / 2)
@@ -164,16 +164,13 @@ Rem commenting this line out, obvz 1450 IF A$ = "Y" then PRF 2
 1600 Print "PERCEPTION BONUS:  "; PER
 1610 Print "MANIPULATION BONUS:"; MA
 1620 Print "KNOWLEDGE BONUS:   "; KN
-1630 Print "INJURY BONUS:      "; IN
+rem 1630 Print "INJURY BONUS:      "; IN
 1640 Print "BASE STRIKE RANK:  "; SR
 1650 Print
 
 1660 Input "DO YOU WANT ANOTHER CHARACTER (Y OR N)"; B$
 1670 If B$ = "N" Or B$ = "n" Then Cls: GoTo 870
 1680 End
-
-
-
 
 
 
