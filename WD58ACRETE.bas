@@ -154,5 +154,8 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
     3020 For L = 0 To 4
         3030 SWP(I, L) = .001 * Int(1000 * HLD(I, L))
     3040 Next L
-3050 SWP(I,5)k = .00003*INT(1000/.03*HLD(I,5))
-3060
+    3050 SWP(I, 5) = .00003 * Int(1000 / .03 * HLD(I, 5))
+    3060 U$(I) = "?": If V$(I) <> "r" Then U$(I) = "NO"
+    3070 If SWP(I, 5) < 9 / 1000 Then U$(I) = "no"
+3080 Next I
+3090 Return
