@@ -89,11 +89,32 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 2380 If M < IN Then M = IN
 2390 If IX > 500 Then IX = 500
 2400 DM = 0
-2410 For I = IM To IX: DM = DM + STO(I): STO(I) = 0
-    2420 SWP(K, 0) = SWP(K, 0) + DM
-    2430 If DM > SM / 2 Then GoTo 2340
-    2440 If SWP(K, 0) > MC Then V$(K) = "g"
-    2450 SWP(K, 5) = SWP(K, 0): If SWP(K, 0) > MC Then SWP(K, 5) = MC + G * (SWP(K, 0) - MC)
-2460 IF SWP(K,5)
-
+2410 For I = IM To IX: DM = DM + STO(I): STO(I) = 0: Next I
+2420 SWP(K, 0) = SWP(K, 0) + DM
+2430 If DM > SM / 2 Then GoTo 2340
+2440 If SWP(K, 0) > MC Then V$(K) = "g"
+2450 SWP(K, 5) = SWP(K, 0): If SWP(K, 0) > MC Then SWP(K, 5) = MC + G * (SWP(K, 0) - MC)
+2460 If SWP(K, 5) > 200 Then V$(K) = "*"
+2470 Return
+2480 Rem ---------
+2490 Rem position of next nucleus
+2500 SUM = 0
+2510 Print " "
+2520 For I = IN To 500
+    2530 SUM = SUM + STO(I)
+    Rem I have no idea why this is pulled.
+    2540 Rem x=70+90*LOG(I,15):Y=70+89*LOG(I+5)
+    2550 Rem IF STO(I)>0 THEN LINE(X,100)-(Y,100)
+2560 Next I
+2570 Print SUM / .03; "LEFT"
+2580 If SUM < SM Then GoTo 410
+2590 SUM = SUM * Rnd
+2600 For I = IN To 500
+    2610 SUM = SUM - STO(I)
+    2620 R = 1 / 10
+    2630 If SUM < 0 Then GoTo 2650
+2640 Next I
+2650 N = N + 1
+2660 SWP(N, 2) = R
+2670 Return
 
