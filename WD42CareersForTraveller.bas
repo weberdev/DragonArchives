@@ -38,7 +38,19 @@ Rem 300 PRINT AT 0,22 W$
 340 Let MNY = 0
 350 Let GMB = 0
 360 Let SKILLS = 0
-370
+370 If PC >= 2 And PC <= 4 Then Let SKILLS = 1
+380 If PC = 2 Then Let B$(1, 1) = "CUTLASS"
+390 If PC = 3 Then Let B$(1, 1) = "RIFLE"
+400 If PC = 4 Then Let B$(1, 1) = "PILOT"
+410 If PC > 1 And PC < 5 Then GoSub 1580
+420 Let SKL = 0
+430 Rem ****************
+440 Rem   TERM CYCLE
+450 Rem ****************
+460 Rem SURVIVAL ROLL
+470 Let S$ = "565755"
+480 GoSub 1340
+
 
 
 
