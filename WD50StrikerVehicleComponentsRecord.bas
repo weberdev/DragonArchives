@@ -13,8 +13,8 @@ Rem updated to QBASIC by Ian Weber
 130 ' *** Utilizing the Data ***
 140 '
 150 Cls: GoSub 2000: Print "FINAL DATA - CHOOSE AN OPTION:"
-160 Print "1 - LIST FOR PRINTER": Print "2 — REVIEW LIST"
-170 Print "3 - MODIFY LIST": Print "4 — START AGAIN"
+160 Print "1 - LIST FOR PRINTER": Print "2 - REVIEW LIST"
+170 Print "3 - MODIFY LIST": Print "4 - START AGAIN"
 180 Print "5 - END"
 190 Input Z: If Z < 1 Or Z > 5 Then GoTo 230
 200 On Z GOTO 250, 320, 1020, 300, 9999
@@ -23,40 +23,22 @@ Rem updated to QBASIC by Ian Weber
 250 LPrint "ITEM"; Tab(30); "MASS"; Tab(48); "VOLUME"; Tab(65); "COST"
 260 For R = 1 To N
     270 LPrint A$(R); Tab(28); M(R); Tab(47); V(R); Tab(64); C(R)
-280 Next
-290 LPrint "TOTALS———"; Tab(29); MASS; Tab(47); VUSED; Tab(64); CST
-300 GoTo 200
-310 '
-320 For X = 1 To N: Cls: GoSub 400
-    330 Print "ITEM "; X: Print A$(X)
-    340 Input "PRESS RETURN TO CONTINUE"; D$
-350 Next X
-360 GoTo 200
-370 '
-380 ' *** Subroutine: Display item ***
-390 '
-400 Print "ITEM "; X: Print A$(X)
-410 Print "MASS "; M(X), "VOLUME "; V(X), "COST "; C(X)
-420 Return
-430 '
-440 ' *** Subroutine: Modify item ***
-450 '
-460 Cls: Input "WHICH ITEM? "; X
-470 If X < 1 Or X > N Then Print "NOT POSSIBLE": GoTo 460
-480 GoSub 400
-490 Input "IS THIS ITEM TO BE DELETED (Y/N)? "; A$
-500 If A$ = "Y" Or A$ = "y" Then A$(X) = "": M(X) = 0: V(X) = 0: C(X) = 0: Return
-510 GoSub 3000
-520 GoSub 4050: Return
-530 '
-540 ' *** Start again (clear data) ***
-550 '
-560 For X = 1 To 60
-    570 A$(X) = "": M(X) = 0: V(X) = 0: C(X) = 0
-580 Next
-590 MASS = 0: VUSED = 0: CST = 0: X = 0
-600 GoTo 70
-
-610 '
-620 ' *** Subroutine: Enter item data ***
-
+271 Next
+280 LPrint "TOTALS———"; Tab(29); MASS; Tab(47); VUSED; Tab(64); CST
+290 GoTo 200
+300 For X = 2 To N: Cls: GoSub 4000
+310 For W = 1 To 100: Next W: Next X: GoTo 200
+320 MASS = 0: VUSED = 0: CST = 0
+330 For X = 0 To N: GoSub 2000: GoSub 4000: GoSub 4050
+340 Next X: GoTo 200
+350
+1000 '*****Subroutines
+1010 '
+2000 '*****Print Vehicle Statistics
+2010 Print "MASS ="; MASS; "KG": Print "USABLE VOLUME ="; VOL - VUSED; "CUBIC METRES": Print "COST = Cr."; CST: Return
+2020 '
+3000 '*****Data Entry Sequence
+3010 Print "ENTER NEXT ITEM IN FOLLOWING SEQUENCE"
+3020 Print "ITEM NAME, MASS (KG), VOLUME (CUBIC METRES), PRICE (CR.)"
+3030 Print "Or enter 'XXX' to exit this section"
+3040 INPUT A$(X), M(X), V(X), C(X): IF A$(X) = "XXX" then GOTO 200
