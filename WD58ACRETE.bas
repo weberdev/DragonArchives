@@ -121,4 +121,38 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 2690 Rem picture
 2700 Cls
 2710 Screen 1
-
+2720 SCL = 300 / Log(50 / .3): KK = 10 - SCL * Log(.3)
+2730 Line (10, 100)-(310, 100)
+2740 For I = 1 To N
+    2750 If SWP(I, 2) < 0.3 Then GoTo 2860
+    2760 X = KK + SCL * Log(SWP(I, 2))
+    2770 RA = SWP(I, 2) * (1 + SWP(I, 3)): RP = SWP(I, 2) * (1 - SWP(I, 3))
+    2780 Y = KK + SCL * Log(RP): Z = KK + SCL * Log(RA)
+    2790 If SWP(I, 5) < SM Then GoTo 2860
+    2800 R = 10 * (SWP(I, 5) - (1 / 3))
+    2810 Line (Y, 140 + I)-(Z, 140 + I): COL = 1
+    2820 MC = 12 * (RP - 75) * (LS - .375)
+    2830 If SWP(I, 5) > MC Then COL = 2
+    2840 If SWP(I, 5) > 200 Then COL = 3
+    2850 Circle (X, 100), R, COL
+2860 Next I
+2870 Return
+2880 Rem ----------
+2890 Rem sorting
+2900 For I = 1 To N: M = 0: R = 55:
+    2910 For J = 1 To N: If SWP(J, 2) > R Then GoTo 2940
+        2920 If SWP(J, 5) < SM / 2 Then GoTo 2940
+        2930 R = SWP(J, 2): M = J: GoTo 2950
+        2940 N = N - 1
+    2950 Next J
+    2960 For L = 0 To 5
+    2970 HLD(I, L) = SWP(M, L): Next L
+    2980 U$(I) = V$(M)
+2990 SWP(M, 2) = 60: Next I
+3000 For I = 1 To N
+    3010 V$(I) = U$(I)
+    3020 For L = 0 To 4
+        3030 SWP(I, L) = .001 * Int(1000 * HLD(I, L))
+    3040 Next L
+3050 SWP(I,5)k = .00003*INT(1000/.03*HLD(I,5))
+3060
