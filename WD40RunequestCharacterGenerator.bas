@@ -147,7 +147,30 @@ Rem Bonus calculation function used to be here.
 1440 Cls
 Rem commenting this line out, obvz 1450 IF A$ = "Y" then PRF 2
 1460 Print: Print NAME$; " THE "; R$(R, 0): Print
-1470
+1470 Print "STRENGTH:      "; CH(1); Tab(25); "LOCAL H.P.S."
+1480 Print "CONSTITUTION:  "; CH(2)
+1490 Print "SIZE:          "; CH(3); Tab(30); "LH = "; Int((CH(3) + CH(2)) / 2)
+1500 Print "INTELLIGENCE:  "; CH(4); Tab(30); "ILH = "; CH(4)
+1510 Print "POWER:         "; CH(5); Tab(30); "PLH = "; CH(5)
+1520 Print "DEXTERITY:     "; CH(6); Tab(30); "DLH = "; CH(6)
+1530 Print "CHARISMA:      "; CH(7); Tab(30); "CLH = "; CH(7)
+1540 Print
+
+1550 Print Tab(25); "TOTAL H.P.S: "; HP
+1560 Print "ATTACK BONUS:      "; AK
+1570 Print "PARRY BONUS:       "; PA
+1580 Print "DEFENCE BONUS:     "; DE
+1590 Print "STEALTH BONUS:     "; ST
+1600 Print "PERCEPTION BONUS:  "; PER
+1610 Print "MANIPULATION BONUS:"; MA
+1620 Print "KNOWLEDGE BONUS:   "; KN
+1630 Print "INJURY BONUS:      "; IN
+1640 Print "BASE STRIKE RANK:  "; SR
+1650 Print
+
+1660 Input "DO YOU WANT ANOTHER CHARACTER (Y OR N)"; B$
+1670 If B$ = "N" Or B$ = "n" Then Cls: GoTo 870
+1680 End
 
 
 
