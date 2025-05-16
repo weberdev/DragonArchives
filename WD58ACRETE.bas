@@ -77,6 +77,23 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
     2190 For L = 0 To 5: SWP(N + 1, L) = 0: Next L: V$(N + 1) = ""
     2200 GoTo 2020
 2210 Next K
-
+2220 Return
+2300 Rem -----------
+2310 Rem accretion
+2320 RA = SWP(K, 2) * (1 + SWP(K, 3)): RP = SWP(K, 2) * (1 - SWP(K, 3))
+2330 MC = .12 * (RP - 75) * (LS - .375)
+2340 SWP(K, 5) = SWP(K, 0): If SWP(K, 0) > MC Then SWP(K, 5) = MC + G * (SWP(K, 0) - MC)
+2350 KF = .1 * (SWP(K, 5 / MS) ^ .25)
+2360 SWP(K, 1) = RP - KF: SWP(K, 4) = RA + KF
+2370 IM = Int(10 * SWP(K, 1) + 0.5): IX = Int(10 * SWP(K, 4) + 0.5)
+2380 If M < IN Then M = IN
+2390 If IX > 500 Then IX = 500
+2400 DM = 0
+2410 For I = IM To IX: DM = DM + STO(I): STO(I) = 0
+    2420 SWP(K, 0) = SWP(K, 0) + DM
+    2430 If DM > SM / 2 Then GoTo 2340
+    2440 If SWP(K, 0) > MC Then V$(K) = "g"
+    2450 SWP(K, 5) = SWP(K, 0): If SWP(K, 0) > MC Then SWP(K, 5) = MC + G * (SWP(K, 0) - MC)
+2460 IF SWP(K,5)
 
 
