@@ -51,4 +51,6 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 510 GoSub 2690
 520 Input "winddown", PIC
 530 Screen O: Width 80: Stop
-
+1000 Rem -------
+1010 Rem NEXT SCREEN
+1020 INPUT "next screen"
