@@ -53,4 +53,6 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 530 Screen O: Width 80: Stop
 1000 Rem -------
 1010 Rem NEXT SCREEN
-1020 INPUT "next screen"
+1020 Input "next screen", PIC: Cls: Return
+2000 Rem --------
+2010
