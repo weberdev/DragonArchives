@@ -15,4 +15,17 @@ Rem Updated to QBASIC by Ian Weber
     130 U = R ^ .33
     140 STO(I) = D * 1.5 * R * R * Exp(-5! * U)
 150 Next I
-
+160 SM = STO(500)
+170 IN = 3 * Sqr(LS): IN = Int(IN): If IN < 0.5 Then IN = 1
+180 If STO(IN) < SM Then SM = STO(IN)
+190 SM = SM / 2
+200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
+210 N = 0
+220 Rem
+230 Rem Start iteration
+240 Rem
+250 GoSub 2500
+260 SWP(N, 3) = E * Rnd: SWP(N, 0) = 0: V$(N) = "r"
+270 SWP(N, 5) = 0
+280 If SPW(N, 3) > 1 Then SWP(N, 3) = 1
+310 FOR KK= 1 TO N-1
