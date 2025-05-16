@@ -117,4 +117,8 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 2650 N = N + 1
 2660 SWP(N, 2) = R
 2670 Return
+2680 Rem -----------
+2690 Rem picture
+2700 Cls
+2710 Screen 1
 
