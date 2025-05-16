@@ -181,5 +181,26 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
     4190 R = RN: GoTo 4170
     4200 SWP(I, 1) = RN: R = Int(6400 * RN): S = Int(5.672 * RN)
     4210 If S > 7 Then S = 7
-4220 G=327
-
+    4220 G = 327 * SWP(I, 5) / (RN * RN): G = .001 * Int(1000 * G)
+    4230 S = S + Int(8 * RN) / 1000
+    4240 Print I, R, G, S: GoTo 4320
+    4250 If V$(I) <> "g" Then GoTo 4330: Rem gas giants
+    4260 S = 8: If SWP(I, 5) > 1 Then S = 9
+    4270 If SWP(I, 5) > 10 Then S = 10
+    4280 RN = 4.2952 * (SWP(I, 5) ^ .3846): If RN < 10.5 Then RN = 10.5
+    4290 SWP(I, 1) = RN: R = Int(6400 * RN): GoTo 4220
+    4330 Rem STARS
+    4310 RN = .6946 * (SWP(I, 5) ^ .5936): S = 11: GoTo 4290
+4320 Next I
+4340 GoSub 1010
+4350 Print "#", "sun tide", "day >(hrs)", "suitable"
+4360 For I = 1 To N
+    4370 H = .020214 * MS * (SWP(I, 1) ^ 4) / (SWP(I, 5) * (SWP(I, 2) ^ 3)): H = H * H
+    4380 H = .001 * Int(1000 * DY)
+    4390 If H > 2 And U$(I) = "?" Then U$(I) = "??"
+    4400 If H > 400 Then U$(I) = "no"
+    4410 DY = 2.667 * SWP(I, 1) / Sqr(SWP(I, 5))
+    4420 DY = .001 * Int(1000 * DY)
+    4430 Print I, H, DY, U$(I)
+4440 Next I
+4450 Return
