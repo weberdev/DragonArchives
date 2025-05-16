@@ -82,7 +82,72 @@ Rem 30 home
 800 For A = 1 To 9: For B = 1 To 8: Read R$(A, B): Next B, A
 810 Rem
 820 Rem Creating the character
+Rem D6 function used to be here.
 830
+Rem Bonus calculation function used to be here.
+850
+860 Dim CH(7)
+870 Cls
+880 Let AK = 0: PA = 0: DE = 0: ST = 0: MA = 0: KN = 0: PER = 0
+890 For A = 1 To 7: Let CH(A) = 0: Next A
+900 For A = 1 To 9: Print Tab(5); A; ". "; R$(A, 0): Next A
+910 Print: Input "WHAT RACE (1-9)? "; R
+920 For A = 1 To 7
+    930 Let B1 = Val(Left$(R$(R, A), 1))
+    940 Let B2 = Val(Right$(R$(R, A), 2))
+    950 For B = 1 To B1
+        960 Let CH(A) = CH(A) + D6
+    970 Next B
+    980 Let CH(A) = CH(A) + B2
+990 Next A
+1000 Cls
+1010 Input "WHAT IS THE NAME OF YOUR CHARACTER? "; NAME$
+1020 If NAME$ = "" Then Let NAME$ = "       "
+1030 Let HP = CH(2)
+1040 For B = 1 To 7
+    1050 Let FB = CR(B)
+    1060 For C = 1 To 4
+        1070 If AB(C, 0) = B And FB < 5 Then Let AK = AK + AB(C, 5) + (AB(C, 6) * (FB - 5))
+        1080 If AB(C, 0) = B And FB > 5 Then Let AK = AK + AB(C, FB)
+        1090 If PB(C, 0) = B And FB < 5 Then Let PA = PA + PB(C, 5) + (PB(C, 6) * (FB - 5))
+        1100 If PB(C, 0) = B And FB > 5 Then Let PA = PA + PB(C, FB)
+        1110 If DB(C, 0) = B And FB < 5 Then Let DE = DE + DB(C, 5) + (DB(C, 6) * (FB - 5))
+        1120 If DB(C, 0) = B And FB > 5 Then Let DE = DE + DB(C, FB)
+        1130 If SB(C, 0) = B And FB < 5 Then Let ST = ST + SB(C, 5) + (SB(C, 6) * (FB - 5))
+        1140 If SB(C, 0) = B And FB > 5 Then Let ST = ST + SB(C, FB)
+        1150 If MB(C, 0) = B And FB < 5 Then Let MA = MA + MB(C, 5) + (MB(C, 6) * (FB - 5))
+        1160 If MB(C, 0) = B And FB > 5 Then Let MA = MA + MB(C, FB)
+    1170 Next C
+    1180 For C = 1 To 2
+        1190 If KB(C, 0) = B And FB > 5 Then Let KN = KN + KB(C, 5) + (KB(C, 6) * (FB - 5))
+        1200 If KB(C, 0) = B And FB <= 5 Then Let KN = KN + KB(C, FB)
+        1210 If PRB(C, 0) = B And FB > 5 Then Let PER = PER + PRB(C, 5) + (PRB(C, 6) * (FB - 5))
+        1220 If PRB(C, 0) = B And FB <= 5 Then Let PER = PER + PRB(C, FB)
+        1230 If HPB(C, 0) = B And FB > 5 Then Let HP = HP + HPB(C, 5) + (HPB(C, 6) * (FB - 5))
+        1240 If HPB(C, 0) = B And FB <= 5 Then Let HP = HP + HPB(C, FB)
+1250 Next C, B
+1260 Rem LOCAL HITS
+1270 If HP < 4 Then Let LH = 1
+1280 If HP > 3 Then Let LH = Int((HP - 1) / 3)
+1290 Rem DAMAGE BONUS
+1300 Let AV = Int((CH(1) + CH(3)) / 2 + 0.5)
+1310 For A = 4 To 1 Step -1
+    1320 If AV <= DAB(A) Then Let DA$ = DB$(A)
+1330 Next A
+1340 If AV > DAB(4) Then Let DA$ = "+" + Str$(Int((AV - 5) / 8)) + "D6"
+1350 Rem STRIKE RANK
+1360 For A = 1 To 3
+    1370 If CH(3) < S1(A) Then Let S1 = A
+1380 Next A
+1390 For A = 1 To 5
+    1400 If CH(6) < S2(A) Then Let S2 = A
+1410 Next A
+1420 Let SR = S1 + S2
+1430 Rem THE PRINTOUT
+1440 Cls
+Rem commenting this line out, obvz 1450 IF A$ = "Y" then PRF 2
+1460 Print: Print NAME$; " THE "; R$(R, 0): Print
+1470
 
 
 
@@ -90,8 +155,7 @@ Rem 30 home
 
 
 
-
-REM Ian here, functions cannot be declared inline in my version of BASIC, thus we make a style choice.
+Rem Ian here, functions cannot be declared inline in my version of BASIC, thus we make a style choice.
 Function D6
     D6 = Int(Rnd * 6) + 1
 End Function
