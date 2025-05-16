@@ -22,7 +22,23 @@ Rem Originally written by Marcus Rowland
 190 Next N
 200 Dim B$(25, 15)
 210 Print "CHOOSE PREFERRED CAREER", "1: NAVY", "2: MARINES", "3: ARMY", "4: SCOUT", "5: MERCHANT", "6: OTHERS"
-rem code removed because no longer relevant.
+Rem code removed because no longer relevant.
 220 Rem pause 4e4
-230
+230 Let PC = Val(InKey$)
+240 If PC < 1 Or PC > 6 Then GoTo 220
+250 GoSub 980
+260 GoSub 1070
+270 Let N = PC
+280 GoSub 2900
+290 GoSub 1180
+Rem 300 PRINT AT 0,22 W$
+310 Let RNK = 0
+320 Let TRM = 0
+330 Let AGE = 18
+340 Let MNY = 0
+350 Let GMB = 0
+360 Let SKILLS = 0
+370
+
+
 
