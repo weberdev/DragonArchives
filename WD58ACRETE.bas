@@ -159,3 +159,15 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
     3070 If SWP(I, 5) < 9 / 1000 Then U$(I) = "no"
 3080 Next I
 3090 Return
+4000 Rem -----------
+4010 Rem secondary quantities
+4020 Print "#", "YEAR", "temp c", "incl"
+4030 For I = 1 To N
+    4040 YR = SOR(SWP(I, 2) / MS) * SWP(I, 2): YR = .001 * Int(1000 * YR)
+    4050 T = 288 * (LS ^ .25) / Sqr(SWP(I, 2)) - 273: T = Int(T)
+    4060 IN = 180 * (1 - (Rnd ^ (2 / 9))): IN = .1 * Int(T)
+    4070 If T < -14 Then U$(I) = "no"
+    4080 If T > 65 Then U$(I) = "no"
+    4090 Print I, YR, T, IN
+4100 Next I
+4110
