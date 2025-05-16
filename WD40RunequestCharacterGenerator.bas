@@ -1,3 +1,7 @@
+Rem RuneQuest Characters
+Rem Originally published in White Dwarf 40 (April 1983) by Nelson Cunningham
+Rem updated to QuickBASIC by Ian Weber
+
 Option Base 1
 10 Rem Runequest Character Generator
 20 Rem STR=1, Con=2,SIZ=3,INT=4,POW=5,DEX=6,CHA=7
@@ -164,7 +168,7 @@ Rem commenting this line out, obvz 1450 IF A$ = "Y" then PRF 2
 1600 Print "PERCEPTION BONUS:  "; PER
 1610 Print "MANIPULATION BONUS:"; MA
 1620 Print "KNOWLEDGE BONUS:   "; KN
-rem 1630 Print "INJURY BONUS:      "; IN
+Rem 1630 Print "INJURY BONUS:      "; IN
 1640 Print "BASE STRIKE RANK:  "; SR
 1650 Print
 
