@@ -16,10 +16,12 @@ Rem Updated to QBASIC by Ian Weber
     140 STO(I) = D * 1.5 * R * R * Exp(-5! * U)
 150 Next I
 160 SM = STO(500)
+165 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 170 IN = 3 * Sqr(LS): IN = Int(IN): If IN < 0.5 Then IN = 1
 180 If STO(IN) < SM Then SM = STO(IN)
 190 SM = SM / 2
-200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
+Rem line moved
+Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
 210 N = 0
 220 Rem
 230 Rem Start iteration
@@ -27,5 +29,26 @@ Rem Updated to QBASIC by Ian Weber
 250 GoSub 2500
 260 SWP(N, 3) = E * Rnd: SWP(N, 0) = 0: V$(N) = "r"
 270 SWP(N, 5) = 0
-280 If SPW(N, 3) > 1 Then SWP(N, 3) = 1
-310 FOR KK= 1 TO N-1
+280 If SWP(N, 3) > 1 Then SWP(N, 3) = 1
+310 For KK = 1 To N - 1
+    320 Print KK, SWP(KK, 2), SWP(KK, 5) / 0.3
+330 Next KK
+360 K = N
+370 GoSub 2300
+380 GoSub 2000
+390 If N = 26 Then GoTo 410
+400 GoTo 250
+410 GoSub 2900
+420 GoSub 1000
+430 Print "max e", E, "stellar mass", MS: Print "dust", D, "gas", G * D / 25
+440 Print " ": Print " #", "orbit", "mass", "e", "type"
+450 For I = 1 To N
+    460 Print I, SWP(I, 2), SWP(I, 5) / .03, SWP(I, 3), V$(I)
+470 Next I
+480 GoSub 1000
+490 GoSub 4000
+500 Input "picture", PIC
+510 GoSub 2690
+520 Input "winddown", PIC
+530 Screen O: Width 80: Stop
+
