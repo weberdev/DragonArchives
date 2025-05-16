@@ -170,4 +170,16 @@ Rem 200 LS = MS ^ 4: If MS < .4 Then LS = .23 * (MS ^ 2.3)
     4080 If T > 65 Then U$(I) = "no"
     4090 Print I, YR, T, IN
 4100 Next I
-4110
+4110 GoSub 1010
+4120 Rem ---------
+4130 Print "$", "radius (Km)", "g(m/s^2)", "size"
+4140 For I = 1 To N
+    4150 If V$(I) <> "r" Then GoTo 4250: Rem terrestrials
+    4160 R = (SWP(I, 5) / .03) ^ (1 / 3): MM = R(2 ^ (1 / 3))
+    4170 RN = MM ^ 2 * (R / 3)
+    4180 If Abs(R - N) < 0.01 Then GoTo 4200
+    4190 R = RN: GoTo 4170
+    4200 SWP(I, 1) = RN: R = Int(6400 * RN): S = Int(5.672 * RN)
+    4210 If S > 7 Then S = 7
+4220 G=327
+
